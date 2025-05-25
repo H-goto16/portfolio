@@ -1,4 +1,5 @@
 "use client";
+import HeaderLinks from "@/components/ui/HeaderLinks";
 import { Stars, Text3D } from "@react-three/drei";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { useEffect, useRef } from "react";
@@ -334,6 +335,7 @@ const Home = () => {
 			}}
 			onContextMenu={(e) => e.preventDefault()}
 		>
+			<HeaderLinks />
 			<Canvas camera={{ position: [0, 0, 40], far: 2000 }}>
 				<Scene />
 			</Canvas>
