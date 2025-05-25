@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import { Inter, Montserrat, Noto_Sans_JP, Playfair_Display, Poppins, Roboto_Mono } from "next/font/google";
 import { ReactNode } from "react";
 import "./globals.css";
@@ -32,6 +33,38 @@ const poppins = Poppins({
   subsets: ["latin"],
   variable: "--font-poppins",
 });
+
+export const metadata: Metadata = {
+  title: {
+    default: "Haruki Goto | Portfolio",
+    template: "%s | Haruki Goto"
+  },
+  description: "Haruki Gotoのポートフォリオサイトです。",
+  keywords: ["portfolio", "developer", "web development", "frontend", "backend"],
+  authors: [{ name: "Haruki Goto" }],
+  creator: "Haruki Goto",
+  openGraph: {
+    type: "website",
+    locale: "ja_JP",
+    // url: "https://your-domain.com",
+    title: "Haruki Goto | Portfolio",
+    description: "Haruki Gotoのポートフォリオサイトです。",
+    siteName: "Haruki Goto Portfolio",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Haruki Goto | Portfolio",
+    description: "Haruki Gotoのポートフォリオサイトです。",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+  },
+};
 
 const RootLayout = ({
   children,
