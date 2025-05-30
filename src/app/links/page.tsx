@@ -3,7 +3,7 @@
 import Footer from "@/components/Footer";
 import MainLayout from "@/components/layout/MainLayout";
 import Link from "next/link";
-import { FaGithub } from "react-icons/fa";
+import { FaCalculator, FaGithub } from "react-icons/fa";
 import { SiQiita, SiWantedly, SiZenn } from "react-icons/si";
 import { useInView } from "react-intersection-observer";
 
@@ -40,6 +40,14 @@ const LinksPage = () => {
 		},
 	];
 
+	const workLinks = [
+		{
+			name: "mini4wd-calculator",
+			url: "https://mini4wd-app.netlify.app/",
+			icon: FaCalculator,
+			color: "hover:text-[#2ea44f]",
+		},
+	];
 	return (
 		<MainLayout>
 			<div className="min-h-screen bg-black text-white py-12 px-4 sm:px-6 lg:px-8">
@@ -51,6 +59,35 @@ const LinksPage = () => {
 					}`}
 				>
 					{links.map((link, index) => {
+						const Icon = link.icon;
+						return (
+							<Link
+								prefetch
+								key={link.name}
+								href={link.url}
+								className={`group relative flex flex-col items-center justify-center p-8 rounded-xl bg-zinc-900/50 backdrop-blur-sm border border-zinc-800/50 transition-all duration-300 hover:scale-[1.02] hover:bg-zinc-800/50 ${
+									link.color
+								} ${
+									inView
+										? "opacity-100 translate-y-0"
+										: "opacity-0 translate-y-10"
+								}`}
+								style={{
+									transitionDelay: `${index * 200}ms`,
+								}}
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								<Icon className="text-5xl mb-4 transition-transform duration-300 group-hover:scale-110" />
+								<span className="text-lg font-medium">{link.name}</span>
+								<div className="absolute inset-0 rounded-xl bg-gradient-to-r from-transparent via-zinc-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+							</Link>
+						);
+					})}
+				</div>
+				<h1 className="text-4xl font-bold text-center my-12">Works</h1>
+				<div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 transition-all duration-1000 transform">
+					{workLinks.map((link, index) => {
 						const Icon = link.icon;
 						return (
 							<Link
