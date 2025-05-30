@@ -4,20 +4,20 @@ import nodemailer from "nodemailer";
 export async function POST(req: Request) {
 	try {
 		const { name, email, message } = await req.json();
+		const user = process.env.MAIL_ACCOUNT;
+		const pass = process.env.MAIL_PASSWORD;
 
 		const transporter = nodemailer.createTransport({
-			host: process.env.SMTP_HOST,
-			port: Number(process.env.SMTP_PORT),
-			secure: true,
+			service: "gmail",
 			auth: {
-				user: process.env.SMTP_USER,
-				pass: process.env.SMTP_PASS,
+				user: user,
+				pass: pass,
 			},
 		});
 
 		const mailOptions = {
-			from: process.env.SMTP_USER,
-			to: process.env.SMTP_TO,
+			from: email,
+			to: user,
 			subject: `Contact from ${name}`,
 			text: `
 Name: ${name}
