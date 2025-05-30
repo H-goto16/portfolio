@@ -7,6 +7,8 @@ import { FaCalculator, FaGithub } from "react-icons/fa";
 import { SiQiita, SiWantedly, SiZenn } from "react-icons/si";
 import { useInView } from "react-intersection-observer";
 
+const delay = 200;
+
 const LinksPage = () => {
 	const { ref, inView } = useInView({
 		triggerOnce: true,
@@ -73,7 +75,7 @@ const LinksPage = () => {
 										: "opacity-0 translate-y-10"
 								}`}
 								style={{
-									transitionDelay: `${index * 200}ms`,
+									transitionDelay: `${index * delay}ms`,
 								}}
 								target="_blank"
 								rel="noopener noreferrer"
@@ -102,7 +104,7 @@ const LinksPage = () => {
 										: "opacity-0 translate-y-10"
 								}`}
 								style={{
-									transitionDelay: `${index * 200}ms`,
+									transitionDelay: `${links.length * delay + index * delay}ms`,
 								}}
 								target="_blank"
 								rel="noopener noreferrer"
