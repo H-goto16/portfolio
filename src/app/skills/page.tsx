@@ -2,7 +2,7 @@
 
 import Footer from "@/components/Footer";
 import SkillsSection from "@/components/SkillsSection";
-import HeaderLinks from "@/components/ui/HeaderLinks";
+import MainLayout from "@/components/layout/MainLayout";
 import { useInView } from "react-intersection-observer";
 
 const frontendSkills = [
@@ -199,9 +199,8 @@ const SkillsPage = () => {
 	});
 
 	return (
-		<>
+		<MainLayout>
 			<div className="min-h-screen bg-black text-white py-12 px-4 sm:px-6 lg:px-8">
-				<HeaderLinks />
 				<h1 className="text-4xl font-bold text-center mb-8">Skills</h1>
 				<div
 					ref={ref}
@@ -233,7 +232,7 @@ const SkillsPage = () => {
 				</div>
 			</div>
 			<Footer />
-		</>
+		</MainLayout>
 	);
 };
 
