@@ -56,6 +56,15 @@ export const metadata: Metadata = {
 	],
 	authors: [{ name: "Haruki Goto" }],
 	creator: "Haruki Goto",
+	icons: {
+		icon: [
+			{ url: "./favicon.ico" },
+			{ url: "./favicon.ico", sizes: "16x16" },
+			{ url: "./favicon.ico", sizes: "32x32" },
+		],
+		shortcut: "./favicon.ico",
+		apple: "./favicon.ico",
+	},
 	openGraph: {
 		type: "website",
 		locale: "ja_JP",
