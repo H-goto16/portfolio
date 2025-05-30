@@ -1,4 +1,5 @@
 "use client";
+import AudioPlayer from "@/components/AudioPlayer";
 import HeaderLinks from "@/components/ui/HeaderLinks";
 import { Stars, Text3D } from "@react-three/drei";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
@@ -10,6 +11,7 @@ const rainbowShader = {
 	uniforms: {
 		time: { value: 0 },
 		baseColor: { value: new THREE.Color(0x555555) },
+		glowIntensity: { value: 0.0 },
 	},
 	vertexShader: `
 		varying vec3 vPosition;
@@ -26,6 +28,7 @@ const rainbowShader = {
 	fragmentShader: `
 		uniform float time;
 		uniform vec3 baseColor;
+		uniform float glowIntensity;
 		varying vec3 vPosition;
 		varying vec3 vNormal;
 		varying vec2 vUv;
@@ -44,6 +47,10 @@ const rainbowShader = {
 			float edgeGlow = pow(1.0 - abs(dot(vNormal, vec3(0.0, 0.0, 1.0))), 2.0);
 			finalColor += rainbow(rainbowT + 0.5) * edgeGlow * 0.5;
 
+			// Add hover glow effect
+			finalColor += rainbowColor * glowIntensity;
+			finalColor = clamp(finalColor, 0.0, 1.0);
+
 			gl_FragColor = vec4(finalColor, 1.0);
 		}
 	`,
@@ -54,6 +61,8 @@ const PortfolioText = () => {
 	const shaderRef = useRef<ShaderMaterial>(null);
 	const initialY = useRef(0);
 	const { viewport } = useThree();
+	const targetGlow = useRef(0);
+	const currentGlow = useRef(0);
 
 	useEffect(() => {
 		if (textRef.current) {
@@ -86,6 +95,9 @@ const PortfolioText = () => {
 
 		if (shaderRef.current) {
 			shaderRef.current.uniforms.time.value = time;
+
+			currentGlow.current += (targetGlow.current - currentGlow.current) * 1.1;
+			shaderRef.current.uniforms.glowIntensity.value = currentGlow.current;
 		}
 	});
 
@@ -104,6 +116,12 @@ const PortfolioText = () => {
 			bevelSize={textSize * 0.004}
 			bevelOffset={0}
 			bevelSegments={10}
+			onPointerEnter={() => {
+				targetGlow.current = 0.2;
+			}}
+			onPointerLeave={() => {
+				targetGlow.current = 0;
+			}}
 		>
 			Portfolio
 			<shaderMaterial
@@ -119,7 +137,7 @@ const PortfolioText = () => {
 const CameraController = () => {
 	const { camera, mouse } = useThree();
 	const targetPosition = useRef(new Vector3(0, 0, 40));
-	const targetZoom = useRef(1000);
+	const targetZoom = useRef(10000);
 	const isLeftClickRef = useRef(false);
 	const isRightClickRef = useRef(false);
 	const touchStartRef = useRef<{
@@ -140,7 +158,7 @@ const CameraController = () => {
 
 			const animationTime =
 				clock.getElapsedTime() - initialAnimationStartTime.current;
-			const animationDuration = 1;
+			const animationDuration = 4;
 
 			if (animationTime < animationDuration) {
 				const progress = animationTime / animationDuration;
@@ -188,7 +206,7 @@ const CameraController = () => {
 			sphericalCurrent.current,
 		);
 		camera.position.copy(newPosition);
-		camera.lookAt(0, 0, 0);
+		camera.lookAt(0, 2, 0);
 	});
 
 	useEffect(() => {
@@ -308,7 +326,7 @@ const Scene = () => {
 			/>
 			<ambientLight intensity={0.15} />
 			<spotLight
-				position={[0, 0, 0]}
+				position={[10, 0, 0]}
 				angle={0.3}
 				penumbra={1}
 				intensity={5}
@@ -319,7 +337,9 @@ const Scene = () => {
 			<pointLight position={[-5, -2, 3]} intensity={2} color="#33ffff" />
 			<pointLight position={[0, 0, -5]} intensity={1.5} color="#ffff33" />
 			<pointLight position={[0, 5, 10]} intensity={2} color="#ffffff" />
-			<PortfolioText />
+			<group position={[0, 2, 0]}>
+				<PortfolioText />
+			</group>
 			<CameraController />
 		</>
 	);
@@ -328,17 +348,17 @@ const Scene = () => {
 const Home = () => {
 	return (
 		<div
-			style={{
-				width: "100vw",
-				height: "100vh",
-				backgroundColor: "#000",
-			}}
+			className="h-screen w-full relative bg-black"
 			onContextMenu={(e) => e.preventDefault()}
+			onTouchMove={(e) => e.preventDefault()}
 		>
-			<HeaderLinks />
-			<Canvas camera={{ position: [0, 0, 40], far: 2000 }}>
+			<HeaderLinks isHome />
+			<Canvas camera={{ position: [0, 2, 40], far: 2000 }}>
 				<Scene />
 			</Canvas>
+			<div className="absolute bottom-8 right-8">
+				<AudioPlayer />
+			</div>
 		</div>
 	);
 };
