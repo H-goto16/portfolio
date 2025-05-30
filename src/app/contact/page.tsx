@@ -1,10 +1,9 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import MainLayout from "@/components/layout/MainLayout";
 import { useState } from "react";
 
 export default function ContactPage() {
-	const router = useRouter();
 	const [formData, setFormData] = useState({
 		name: "",
 		email: "",
@@ -50,80 +49,91 @@ export default function ContactPage() {
 	};
 
 	return (
-		<div className="min-h-screen bg-black text-white py-12 px-4 sm:px-6 lg:px-8">
-			<div className="max-w-2xl mx-auto">
-				<h1 className="text-4xl font-bold text-center mb-8">Contact</h1>
-				<div className="bg-zinc-900 p-6 rounded-lg shadow-xl">
-					<form onSubmit={handleSubmit} className="space-y-6">
-						<div>
-							<label htmlFor="name" className="block text-sm font-medium mb-2">
-								Name
-							</label>
-							<input
-								type="text"
-								id="name"
-								required
-								className="w-full px-4 py-2 rounded-md bg-zinc-800 border border-zinc-700 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition"
-								value={formData.name}
-								onChange={(e) =>
-									setFormData({ ...formData, name: e.target.value })
-								}
-							/>
-						</div>
-						<div>
-							<label htmlFor="email" className="block text-sm font-medium mb-2">
-								Email
-							</label>
-							<input
-								type="email"
-								id="email"
-								required
-								className="w-full px-4 py-2 rounded-md bg-zinc-800 border border-zinc-700 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition"
-								value={formData.email}
-								onChange={(e) =>
-									setFormData({ ...formData, email: e.target.value })
-								}
-							/>
-						</div>
-						<div>
-							<label
-								htmlFor="message"
-								className="block text-sm font-medium mb-2"
-							>
-								Message
-							</label>
-							<textarea
-								id="message"
-								required
-								rows={5}
-								className="w-full px-4 py-2 rounded-md bg-zinc-800 border border-zinc-700 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition"
-								value={formData.message}
-								onChange={(e) =>
-									setFormData({ ...formData, message: e.target.value })
-								}
-							/>
-						</div>
-						{submitStatus.type && (
-							<div
-								className={`p-4 rounded-md ${
-									submitStatus.type === "success"
-										? "bg-green-900 text-green-200"
-										: "bg-red-900 text-red-200"
-								}`}
-							>
-								{submitStatus.message}
+		<MainLayout>
+			<div className="min-h-screen bg-black text-white py-12 px-4 sm:px-6 lg:px-8">
+				<div className="max-w-2xl mx-auto">
+					<h1 className="text-4xl font-bold text-center mb-8">Contact</h1>
+					<div className="bg-zinc-900 p-6 rounded-lg shadow-xl">
+						<form onSubmit={handleSubmit} className="space-y-6">
+							<div>
+								<label
+									htmlFor="name"
+									className="block text-sm font-medium mb-2"
+								>
+									Name
+								</label>
+								<input
+									type="text"
+									id="name"
+									placeholder="Taro Yamada"
+									required
+									className="w-full px-4 py-2 rounded-md bg-zinc-800 border border-zinc-700 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition"
+									value={formData.name}
+									onChange={(e) =>
+										setFormData({ ...formData, name: e.target.value })
+									}
+								/>
 							</div>
-						)}
-						<button
-							type="submit"
-							disabled={isSubmitting}
-							className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-md transition duration-200 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed"
-						>
-							{isSubmitting ? "Sending..." : "Send Message"}
-						</button>
-					</form>
+							<div>
+								<label
+									htmlFor="email"
+									className="block text-sm font-medium mb-2"
+								>
+									Email
+								</label>
+								<input
+									type="email"
+									placeholder="example@gmail.com"
+									id="email"
+									required
+									className="w-full px-4 py-2 rounded-md bg-zinc-800 border border-zinc-700 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition"
+									value={formData.email}
+									onChange={(e) =>
+										setFormData({ ...formData, email: e.target.value })
+									}
+								/>
+							</div>
+							<div>
+								<label
+									htmlFor="message"
+									className="block text-sm font-medium mb-2"
+								>
+									Message
+								</label>
+								<textarea
+									id="message"
+									placeholder="Enter your message here"
+									required
+									rows={5}
+									className="w-full px-4 py-2 rounded-md bg-zinc-800 border border-zinc-700 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition"
+									value={formData.message}
+									onChange={(e) =>
+										setFormData({ ...formData, message: e.target.value })
+									}
+								/>
+							</div>
+							{submitStatus.type && (
+								<div
+									className={`p-4 rounded-md ${
+										submitStatus.type === "success"
+											? "bg-green-900 text-green-200"
+											: "bg-red-900 text-red-200"
+									}`}
+								>
+									{submitStatus.message}
+								</div>
+							)}
+							<button
+								type="submit"
+								disabled={isSubmitting}
+								className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-md transition duration-200 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed"
+							>
+								{isSubmitting ? "Sending..." : "Send Message"}
+							</button>
+						</form>
+					</div>
 				</div>
 			</div>
-		</div>
+		</MainLayout>
 	);
 }
