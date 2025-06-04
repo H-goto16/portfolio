@@ -1,20 +1,9 @@
 "use client";
 
 import MainLayout from "@/components/layout/MainLayout";
-import type { Metadata } from "next";
 import { useState } from "react";
 
-export const metadata: Metadata = {
-	title: "Contact | Haruki Goto",
-	description: "Haruki Gotoの連絡先ページです。",
-	openGraph: {
-		type: "website",
-		locale: "ja_JP",
-		url: "https://haruki-goto.com/contact",
-		title: "Contact | Haruki Goto",
-		description: "Haruki Gotoの連絡先ページです。",
-	},
-};
+
 
 export default function ContactPage() {
 	const [formData, setFormData] = useState({

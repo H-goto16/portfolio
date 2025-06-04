@@ -2,7 +2,6 @@
 
 import Footer from "@/components/Footer";
 import MainLayout from "@/components/layout/MainLayout";
-import type { Metadata } from "next";
 import Link from "next/link";
 import { FaCalculator, FaGithub } from "react-icons/fa";
 import { SiQiita, SiWantedly, SiZenn } from "react-icons/si";
@@ -10,18 +9,7 @@ import { useInView } from "react-intersection-observer";
 
 const delay = 200;
 
-export const metadata: Metadata = {
-	title: "Links | Haruki Goto",
-	description: "Haruki Gotoのリンクページです。",
-	openGraph: {
-		type: "website",
-		locale: "ja_JP",
-		url: "https://haruki-goto.com/links",
-		title: "Links | Haruki Goto",
-		description: "Haruki Gotoのリンクページです。",
-		siteName: "Haruki Goto Portfolio",
-	},
-};
+
 
 const LinksPage = () => {
 	const { ref, inView } = useInView({
