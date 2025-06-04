@@ -3,7 +3,21 @@
 import Footer from "@/components/Footer";
 import SkillsSection from "@/components/SkillsSection";
 import MainLayout from "@/components/layout/MainLayout";
+import type { Metadata } from "next";
 import { useInView } from "react-intersection-observer";
+
+export const metadata: Metadata = {
+	title: "Skills | Haruki Goto",
+	description: "Haruki Gotoのスキルページです。",
+	openGraph: {
+		type: "website",
+		locale: "ja_JP",
+		url: "https://haruki-goto.com/skills",
+		title: "Skills | Haruki Goto",
+		description: "Haruki Gotoのスキルページです。",
+		siteName: "Haruki Goto Portfolio",
+	},
+};
 
 const frontendSkills = [
 	{
