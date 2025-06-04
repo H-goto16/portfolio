@@ -3,22 +3,8 @@
 import Footer from "@/components/Footer";
 import MainLayout from "@/components/layout/MainLayout";
 import { getMarkdownContent } from "@/utils/markdown";
-import type { Metadata } from "next";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-
-export const metadata: Metadata = {
-	title: "About | Haruki Goto",
-	description: "Haruki Gotoの自己紹介ページです。",
-	openGraph: {
-		type: "website",
-		locale: "ja_JP",
-		url: "https://haruki-goto.com/about",
-		title: "About | Haruki Goto",
-		description: "Haruki Gotoの自己紹介ページです。",
-		siteName: "Haruki Goto Portfolio",
-	},
-};
 
 const AboutPage = () => {
 	const { content } = getMarkdownContent("about", "profile.md");
