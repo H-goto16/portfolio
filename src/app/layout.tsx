@@ -68,7 +68,7 @@ export const metadata: Metadata = {
 	openGraph: {
 		type: "website",
 		locale: "ja_JP",
-		// url: "",
+		url: "https://haruki-goto.com",
 		title: "Haruki Goto | Portfolio",
 		description: "Haruki Gotoのポートフォリオサイトです。",
 		siteName: "Haruki Goto Portfolio",

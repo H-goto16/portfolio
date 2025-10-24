@@ -3,6 +3,8 @@
 import MainLayout from "@/components/layout/MainLayout";
 import { useState } from "react";
 
+
+
 export default function ContactPage() {
 	const [formData, setFormData] = useState({
 		name: "",

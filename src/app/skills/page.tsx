@@ -5,6 +5,8 @@ import SkillsSection from "@/components/SkillsSection";
 import MainLayout from "@/components/layout/MainLayout";
 import { useInView } from "react-intersection-observer";
 
+
+
 const frontendSkills = [
 	{
 		name: "HTML",

@@ -9,6 +9,8 @@ import { useInView } from "react-intersection-observer";
 
 const delay = 200;
 
+
+
 const LinksPage = () => {
 	const { ref, inView } = useInView({
 		triggerOnce: true,
