@@ -3,7 +3,7 @@
 import Footer from "@/components/Footer";
 import MainLayout from "@/components/layout/MainLayout";
 import Link from "next/link";
-import { FaCalculator, FaGithub } from "react-icons/fa";
+import { FaBriefcase, FaCalculator, FaGithub } from "react-icons/fa";
 import { SiQiita, SiWantedly, SiZenn } from "react-icons/si";
 import { useInView } from "react-intersection-observer";
 
@@ -27,6 +27,12 @@ const LinksPage = () => {
 			url: "https://www.wantedly.com/id/haruki_goto",
 			icon: SiWantedly,
 			color: "hover:text-[#21bddb]",
+		},
+		{
+			name: "YOUTRUST",
+			url: "https://youtrust.jp/users/haruki-goto",
+			icon: FaBriefcase,
+			color: "hover:text-[#00c4cc]",
 		},
 		{
 			name: "Qiita",
