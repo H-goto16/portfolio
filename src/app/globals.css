@@ -3,27 +3,32 @@
 @tailwind utilities;
 
 :root {
-  --font-montserrat: var(--font-montserrat);
-  --font-playfair: var(--font-playfair);
-  --font-noto-sans-jp: var(--font-noto-sans-jp);
-  --font-inter: var(--font-inter);
-  --font-roboto-mono: var(--font-roboto-mono);
-  --font-poppins: var(--font-poppins);
+	--font-montserrat: var(--font-montserrat);
+	--font-playfair: var(--font-playfair);
+	--font-noto-sans-jp: var(--font-noto-sans-jp);
+	--font-inter: var(--font-inter);
+	--font-roboto-mono: var(--font-roboto-mono);
+	--font-poppins: var(--font-poppins);
 }
 
 body {
-  font-family: var(--font-noto-sans-jp), var(--font-inter), sans-serif;
+	font-family: var(--font-noto-sans-jp), var(--font-inter), sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-montserrat), var(--font-playfair), serif;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: var(--font-montserrat), var(--font-playfair), serif;
 }
 
-code, pre {
-  font-family: var(--font-roboto-mono), monospace;
+code,
+pre {
+	font-family: var(--font-roboto-mono), monospace;
 }
 
 .accent-text {
-  font-family: var(--font-poppins), sans-serif;
+	font-family: var(--font-poppins), sans-serif;
 }
-

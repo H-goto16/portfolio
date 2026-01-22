@@ -7,9 +7,7 @@ import { FaBriefcase, FaCalculator, FaGithub } from "react-icons/fa";
 import { SiQiita, SiWantedly, SiZenn } from "react-icons/si";
 import { useInView } from "react-intersection-observer";
 
-const delay = 200;
-
-
+const delay = 100;
 
 const LinksPage = () => {
 	const { ref, inView } = useInView({

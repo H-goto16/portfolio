@@ -46,7 +46,7 @@ export const metadata: Metadata = {
 		default: "Haruki Goto | Portfolio",
 		template: "%s | Haruki Goto",
 	},
-	description: "Haruki Gotoのポートフォリオサイトです。",
+	description: "Haruki Gotoのポートフォリオサイト",
 	keywords: [
 		"portfolio",
 		"developer",
@@ -70,13 +70,13 @@ export const metadata: Metadata = {
 		locale: "ja_JP",
 		url: "https://haruki-goto.com",
 		title: "Haruki Goto | Portfolio",
-		description: "Haruki Gotoのポートフォリオサイトです。",
+		description: "Haruki Gotoのポートフォリオサイト",
 		siteName: "Haruki Goto Portfolio",
 	},
 	twitter: {
 		card: "summary_large_image",
 		title: "Haruki Goto | Portfolio",
-		description: "Haruki Gotoのポートフォリオサイトです。",
+		description: "Haruki Gotoのポートフォリオサイト",
 	},
 	robots: {
 		index: true,

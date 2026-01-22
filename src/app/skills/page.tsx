@@ -5,8 +5,6 @@ import SkillsSection from "@/components/SkillsSection";
 import MainLayout from "@/components/layout/MainLayout";
 import { useInView } from "react-intersection-observer";
 
-
-
 const frontendSkills = [
 	{
 		name: "HTML",
@@ -223,7 +221,7 @@ const SkillsPage = () => {
 							key={section.title}
 							className={"transition-all duration-500"}
 							style={{
-								transitionDelay: `${index * 200}ms`,
+								transitionDelay: `${index * 100}ms`,
 								opacity: inView ? 1 : 0,
 								transform: inView ? "translateY(0)" : "translateY(20px)",
 							}}
