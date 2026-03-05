@@ -17,13 +17,13 @@ const links: HeaderLink[] = [
 	{ text: "About", href: "/about" },
 	{ text: "Skills", href: "/skills" },
 	{ text: "Links", href: "/links" },
+	{ text: "Career", href: "/career" },
 	{ text: "Contact", href: "/contact" },
 ];
 
 const HeaderLinks = ({ isHome = false }: HeaderLinksProps) => {
 	const [isOpen, setIsOpen] = useState(false);
 
-	// メニューが開いているときはスクロールを無効化
 	useEffect(() => {
 		if (isOpen) {
 			document.body.style.overflow = "hidden";
@@ -49,7 +49,6 @@ const HeaderLinks = ({ isHome = false }: HeaderLinksProps) => {
 				>
 					<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 						<div className="flex items-center justify-end h-20">
-							{/* ハンバーガーメニューボタン */}
 							<button
 								type="button"
 								onClick={() => setIsOpen(!isOpen)}
@@ -74,8 +73,6 @@ const HeaderLinks = ({ isHome = false }: HeaderLinksProps) => {
 									/>
 								</div>
 							</button>
-
-							{/* デスクトップメニュー */}
 							<div className="hidden lg:flex items-center gap-8">
 								{links.map((link) => (
 									<Link
@@ -99,8 +96,6 @@ const HeaderLinks = ({ isHome = false }: HeaderLinksProps) => {
 					</div>
 				</div>
 			</nav>
-
-			{/* モバイルメニュー */}
 			<div
 				className={`lg:hidden fixed inset-0 bg-black/95 backdrop-blur-md transition-all duration-300 z-40 ${
 					isOpen

@@ -3,7 +3,16 @@
 import Footer from "@/components/Footer";
 import MainLayout from "@/components/layout/MainLayout";
 import Link from "next/link";
-import { FaBriefcase, FaCalculator, FaGithub } from "react-icons/fa";
+import {
+	FaBriefcase,
+	FaCalculator,
+	FaFilePdf,
+	FaGithub,
+	FaImage,
+} from "react-icons/fa";
+import { FiSettings } from "react-icons/fi";
+import { IoMdPin } from "react-icons/io";
+import { IoDocument, IoMic } from "react-icons/io5";
 import { SiQiita, SiWantedly, SiZenn } from "react-icons/si";
 import { useInView } from "react-intersection-observer";
 
@@ -46,13 +55,50 @@ const LinksPage = () => {
 			icon: SiZenn,
 			color: "hover:text-[#3ea8ff]",
 		},
+		{
+			name: "Download Career Sheets",
+			url: "/api/career",
+			icon: FaFilePdf,
+			color: "hover:text-white",
+			download: true,
+		},
 	];
 
 	const workLinks = [
 		{
+			name: "dotfiles",
+			url: "https://github.com/H-goto16/dotfiles",
+			icon: FiSettings,
+			color: "hover:text-[#2ea44f]",
+		},
+		{
 			name: "mini4wd-calculator",
 			url: "https://mini4wd-app.netlify.app/",
 			icon: FaCalculator,
+			color: "hover:text-[#2ea44f]",
+		},
+		{
+			name: "Zeotag",
+			url: "https://github.com/H-goto16/zeotag",
+			icon: IoMdPin,
+			color: "hover:text-[#2ea44f]",
+		},
+		{
+			name: "VCS to CSV",
+			url: "https://github.com/H-goto16/vcs_to_csv",
+			icon: IoDocument,
+			color: "hover:text-[#2ea44f]",
+		},
+		{
+			name: "Audio Kit",
+			url: "https://github.com/H-goto16/online_audio_kit",
+			icon: IoMic,
+			color: "hover:text-[#2ea44f]",
+		},
+		{
+			name: "2025_senior_thesis",
+			url: "https://github.com/H-goto16/2025_senior_thesis",
+			icon: FaImage,
 			color: "hover:text-[#2ea44f]",
 		},
 	];
@@ -83,8 +129,13 @@ const LinksPage = () => {
 								style={{
 									transitionDelay: `${index * delay}ms`,
 								}}
-								target="_blank"
-								rel="noopener noreferrer"
+								target={link.url.startsWith("http") ? "_blank" : undefined}
+								rel={
+									link.url.startsWith("http")
+										? "noopener noreferrer"
+										: undefined
+								}
+								download={link.download}
 							>
 								<Icon className="text-5xl mb-4 transition-transform duration-300 group-hover:scale-110" />
 								<span className="text-lg font-medium">{link.name}</span>
