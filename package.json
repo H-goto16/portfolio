@@ -11,7 +11,8 @@
 		"lint": "biome check .",
 		"format": "biome format --write .",
 		"precommit": "lefthook run pre-commit",
-		"knip": "knip"
+		"knip": "knip",
+		"generate-skills-pdf": "node scripts/generate-skills-pdf.mjs"
 	},
 	"dependencies": {
 		"@react-three/drei": "^10.0.8",
