@@ -20,7 +20,7 @@ mu-mu-domain
 
 #
 
-© 2025 Haruki Goto. All rights reserved.
+© 2026 Haruki Goto. All rights reserved.
 
 All content on this website — including but not limited to images, text, code, and visual works — is protected by copyright law.
 
